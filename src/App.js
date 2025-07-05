@@ -43,7 +43,7 @@ function App() {
       setDailyQuote(stored.quote);
       setDailyAuthor(stored.author);
     } else {
-      const res = await fetch(`http://api.quotable.io/random?tags=inspirational`);
+      const res = await fetch(`https://api.quotable.io/random?tags=inspirational`);
       const data = await res.json();
       if (data && data.content) {
         setDailyQuote(data.content);
@@ -64,7 +64,7 @@ function App() {
 
     try {
       if (language === "en") {
-        const res = await fetch(`http://api.quotable.io/random?tags=${category}`);
+        const res = await fetch(`https://api.quotable.io/random?tags=${category}`);
         const data = await res.json();
         setQuote(data.content || "No quote found.");
         setAuthor(data.author || "API");
@@ -107,7 +107,7 @@ function App() {
   const handleSearch = async (e) => {
     if (e.key === "Enter") {
       if (language === "en") {
-        const res = await fetch(`http://api.quotable.io/search/quotes?query=${searchTerm}`);
+        const res = await fetch(`https://api.quotable.io/search/quotes?query=${searchTerm}`);
         const data = await res.json();
         if (data.count > 0) {
           const q = data.results[0];
